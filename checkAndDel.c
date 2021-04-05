@@ -1,7 +1,14 @@
-checkAndDel()
+checkAndDel(int countFirst)
 {
-	int i, minPrice, minPriceNumber, count;
+	int i,j,k, count;
 	char paramName[100];
+	
+	if (countFirst == 0) {
+		lr_output_message("Билетов первого класса нет, удалять нечего");
+		return 0;
+	}
+	
+	j = rand()%countFirst + 1;
 	
 //	Заходим в Itinerary
 	web_reg_save_param_ex(
@@ -17,11 +24,11 @@ checkAndDel()
 	    LAST);
 		
 	web_reg_save_param_ex(
-	    "ParamName=prices", 
-	    "LB/IC=Total Charge: $ ",
-	    "RB/IC= ",
-	    "Ordinal=all");
-	
+		"ParamName=classesTicket",
+		"LB=A ",
+		"RB= class ticket",
+		"Ordinal=all",
+		LAST);
 	web_url("Itinerary Button", 
 		"URL=http://localhost:1080/cgi-bin/welcome.pl?page=itinerary", 
 		"TargetFrame=body", 
@@ -32,25 +39,24 @@ checkAndDel()
 		"Mode=HTML", 
 		LAST);
 
-//	Ищем что удалать
-	minPrice = atoi(lr_eval_string("{prices_1}"));
-	minPriceNumber = 1;
-	count = atoi(lr_eval_string("{prices_count}"));
-	for(i = 2;i <= count; i++) {
-		sprintf(paramName, "{prices_%d}", i);
-		
-		if (minPrice > atoi(lr_eval_string(paramName))) {
-			minPrice = atoi(lr_eval_string(paramName));
-			minPriceNumber = i;
-		}
-	}
-	
-	lr_output_message("Минимальная цена %d у билена под номером %d", minPrice, minPriceNumber);
-	
+    count = atoi(lr_eval_string("{classesTicket_count}"));
+
 //	собираем набор параметров для удаления
 	lr_save_string("","param");
-	lr_param_sprintf("param","%d=on&", minPriceNumber);
-	
+	k = 1;
+	for (i = 1; i <= count; i++)
+       {
+    		sprintf(paramName, "{classesTicket_%d}", i);
+
+       		if (strcmp(lr_eval_string(paramName),"First") == 0) {
+				if (k == j) {
+					lr_param_sprintf("param","%d=on&", i);
+					break;
+				}
+				k++;
+       		}
+       }	
+    
 	for(i = 1;i <= count; i++) {
         lr_param_sprintf("param",
 	        "%sflightID=%s&",
