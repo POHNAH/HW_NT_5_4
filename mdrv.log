@@ -1,0 +1,37 @@
+vuser_init.c(18): -----------------------------------------
+vuser_init.c(19): 131030.774402592zHDQiQfptfiDDDDDtAtDQpDHcHf
+logic.c(10): Создан билет №1
+createTicket.c(15): Paris
+createTicket.c(17): Zurich
+createTicket.c(19): Aisle
+createTicket.c(21): First
+createTicket.c(112): 492;253;05/04/2021
+createTicket.c(114): 941;238;13/04/2021
+createTicket.c(126): Sidor
+createTicket.c(128): Ivanov
+createTicket.c(131): Adress Lenina, 2
+createTicket.c(134): Credit card 3333, 02/23
+logic.c(10): Создан билет №2
+createTicket.c(15): London
+createTicket.c(17): Sydney
+createTicket.c(19): Aisle
+createTicket.c(21): Business
+createTicket.c(112): 283;1709;05/04/2021
+createTicket.c(114): 820;2089;13/04/2021
+createTicket.c(126): Sergey
+createTicket.c(128): Ivanov
+createTicket.c(131): Adress Akademicheskaya, 3
+createTicket.c(134): Credit card 2222, 01/22
+logic.c(10): Создан билет №3
+createTicket.c(15): Paris
+createTicket.c(17): Paris
+createTicket.c(19): Window
+createTicket.c(21): Coach
+createTicket.c(46): 440;0;05/04/2021
+createTicket.c(57): Ivan
+createTicket.c(59): Sergeev
+createTicket.c(62): Adress Akademicheskaya, 1
+createTicket.c(65): Credit card 2222, 01/22
+vuser_init.c(18): -----------------------------------------
+vuser_init.c(19): 131030.774807614zHDQiQfptHQVzzzHtAtDQpDHciHf
+checkAndDel.c(48): Минимальная цена 0 у билена под номером 3
